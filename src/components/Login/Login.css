@@ -1,0 +1,38 @@
+.section-form-login {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    border: solid 2px;
+    border-radius: 10px;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.span-login {
+    margin: 7px 7px;
+    max-width: 270px;
+}
+
+.button-login {
+    cursor: pointer;
+    width: 80px;
+    margin-top: 25px;
+}
+
+a.link-register {
+
+    text-decoration: none;
+    color: black;
+}
+.button-go-to-register{
+    margin: 15px 10px;
+}
+
+.login-h3{
+    margin: 15px auto;
+}

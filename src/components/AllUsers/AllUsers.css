@@ -1,0 +1,40 @@
+.div-all-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+
+.div-exit{
+    display: flex;    
+    justify-content: center;
+    margin: 20px 20px;
+}
+
+
+.welcome{
+    display: flex;    
+    justify-content: center;
+}
+button{
+    margin: 10px 10px;
+    cursor: pointer;
+}
+
+.btn-del:hover{
+    background-color: red;
+    color: white;
+}
+
+
+#login{
+    width: 500px;
+}

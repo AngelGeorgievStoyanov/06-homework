@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Angel",
+      "lastName": "Stoyanov",
+      "username": "Angelo",
+      "password": "11111",
+      "rePass": "11111",
+      "gender": 1,
+      "role": 2,
+      "imageUrl": "",
+      "description": "ddddddddddd",
+      "timeCreated": "13:26:50 / 08-12-2022",
+      "timeEdited": "12:44:45 / 10-12-2022",
+      "status": 2
+    },
+    {
+      "id": 6,
+      "firstName": "Snejana",
+      "lastName": "Stoyanova",
+      "username": "sneji",
+      "password": "rrrrr",
+      "rePass": "rrrrr",
+      "gender": 1,
+      "role": 1,
+      "imageUrl": "",
+      "description": "",
+      "timeCreated": "08:52:39 / 09-12-2022",
+      "timeEdited": "12:15:38 / 10-12-2022",
+      "status": 1
+    },
+    {
+      "firstName": "traianh",
+      "lastName": "vaskow",
+      "username": "niki",
+      "password": "hhhhh",
+      "rePass": "hhhhh",
+      "gender": 1,
+      "role": 1,
+      "imageUrl": "",
+      "description": "sneji",
+      "timeCreated": "08:59:45 / 09-12-2022",
+      "status": 1,
+      "id": 8
+    },
+    {
+      "id": 9,
+      "firstName": "Petar",
+      "lastName": "Stoyanov",
+      "username": "pesho",
+      "password": "11111",
+      "rePass": "11111",
+      "gender": 1,
+      "role": 2,
+      "imageUrl": "",
+      "description": "",
+      "timeCreated": "10:04:19 / 09-12-2022",
+      "timeEdited": "10:05:56 / 09-12-2022",
+      "status": 1
+    },
+    {
+      "id": 10,
+      "firstName": "Angel",
+      "lastName": "Stoyanov",
+      "username": "Angelouuu",
+      "password": "11111",
+      "rePass": "11111",
+      "gender": 1,
+      "role": 2,
+      "imageUrl": "http://dancing.org/rubik/corner-transform.png",
+      "description": "",
+      "timeCreated": "10:33:04 / 09-12-2022",
+      "timeEdited": "12:16:22 / 10-12-2022",
+      "status": 1
+    },
+    {
+      "id": 13,
+      "firstName": "Angel",
+      "lastName": "Stoyanov",
+      "username": "mmmmmmmmmm",
+      "password": "mmmmm",
+      "rePass": "mmmmm",
+      "gender": 2,
+      "role": 2,
+      "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/32/3f/f2/globus-hotel.jpg?w=1200&h=-1&s=1",
+      "description": "hhhhhhhhhheeee eeeeeee  eeeeee \n rrr rr y yyy \n  yyy    yyyyyyyyyyyy yy y \n hhhhhhhhhhhh gggggggggggggg ggggggggg gggggggg ggggggg \n ggggggggggg \n ggggggggg \n  ggggggggg ggggggggg ggggggg ggggggggggggggggggg gggg ggggggg gggggggggggggg gggggggg ggggggggg  gggggggg gggggggg ggggggggggggggggggggggggggg ggggg gggggggggg ggggggggggg ggggggg ggggggggg  ",
+      "timeCreated": "10:25:44 / 10-12-2022",
+      "timeEdited": "12:16:05 / 10-12-2022",
+      "status": 1
+    }
+  ]
+}
