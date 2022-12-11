@@ -10,11 +10,12 @@ interface FormInputTextProps<TFieldValues extends FieldValues> {
     disabled?: boolean;
     size?: 'small' | 'medium';
     error?: string | undefined;
+    type?:'text' | 'password'
 }
 
 
 function FormInputText<TFieldValues extends FieldValues>(
-    { name, control, label, rules = {}, disabled = false, size = 'medium', error=undefined}: FormInputTextProps<TFieldValues>) {
+    { name, control, label, rules = {}, disabled = false, size = 'medium', error=undefined ,type='text'}: FormInputTextProps<TFieldValues>) {
     return (
         (
             <Controller
@@ -22,7 +23,7 @@ function FormInputText<TFieldValues extends FieldValues>(
                 control={control}
                 render={({ field }) =>
                     <TextField label={label} disabled={disabled} size={size} error={!!error} 
-                     helperText={error || ''} {...field} />
+                     helperText={error || ''} type={type} {...field} />
                 }
                 rules={rules}
             />

@@ -51,7 +51,7 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
 
         reset({username,password})
 
-        console.log(data)
+      
 
 
 
@@ -104,8 +104,8 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
 
                 <FormInputText name='username' label='Username' control={control} error={errors.username?.message}
                 />
-                <FormInputText name='password' label='Password' control={control} error={errors.password?.message}
-                />
+                <FormInputText name='password' label='Password' control={control} type='password' error={errors.password?.message}
+              />
 
                 <Button variant="contained" endIcon={<SendIcon />} type='submit' disabled={!(isDirty && isValid)}>
                     Submit
@@ -113,6 +113,7 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
                 <Button variant="contained" endIcon={<CancelIcon />} color='warning' type='reset'>
                     Reset
                 </Button>
+                <button className='button-go-to-register' onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onTogle(e)} >Don't Have An Account? Sign up!</button>
 
             </Box>
 

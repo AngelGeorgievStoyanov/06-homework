@@ -66,12 +66,14 @@ const AllUsers = () => {
         try {
 
             if ('id' in user) {
+                console.log(user,'2')
 
                 await handleUpdateUser(user)
                 setEditedUser(undefined)
 
             } else {
 
+                console.log(user,'3')
 
                 await API_CLIENT.findByUsername(user.username)
 
@@ -134,14 +136,22 @@ const AllUsers = () => {
 
 
     const handleEditUser = (user: User) => {
+        console.log(editedUser,'editedUser1')
+        console.log(user)
 
         mainHideF()
 
         if (hide === false) {
             setHide(!hide);
         }
+        
+         setEditedUser(undefined)
+        // setEditedUser(editedUser ? undefined : new User(0, '', '', '', '', '', undefined, undefined, '', '', '', ''))
+        
+        
         setEditedUser(user)
 
+        console.log(editedUser,'editedUser2')
 
     }
 

@@ -148,6 +148,10 @@ export const CardUser: React.FC<CardUserProps> = ({ user, owner, onEditedUser, a
                 {(admin === true) && (user.id === owner) ? <Typography variant="h5" component="div">This is your profile {user.username} ! </Typography> : admin === true ? <Button variant="outlined" onClick={handeleDelete} startIcon={<DeleteIcon />}>
                     DELETE USER
                 </Button> : ''}
+
+                {/* {(admin === true) ? <button id={user.id + ''} onClick={() => onEditedUser(user)}>You are ADMIN, edit User</button> : (user.id === owner) ? <button id={user.id + ''} onClick={() => onEditedUser(user)}>Edit your profile</button> : ''}
+            {(admin === true) && (user.id === owner) ? <h3>This is your profile {user.username} ! </h3> : admin === true ? <button className="btn-del" onClick={handeleDelete} >DELETE USER</button> : ''} */}
+
             </Card>
 
         </>
