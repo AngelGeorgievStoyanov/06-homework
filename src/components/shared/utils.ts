@@ -5,6 +5,6 @@ export function toIsoDate(date:Date){
         const timeH = timeCreated.split('T')[1];
         timeData = timeData.split('-').reverse().join('-');
         const currentDataCreated = timeH + ' / ' + timeData;
-        return currentDataCreated
+        return currentDataCreated;
 }
       

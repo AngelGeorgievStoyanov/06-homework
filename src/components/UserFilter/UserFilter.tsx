@@ -1,16 +1,14 @@
 import InputLabel from "@mui/material/InputLabel/InputLabel";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import React from "react";
-
-import { FilterChangeListener, FilterType } from "../AllUsers/AllUsers"
+import { FilterChangeListener, FilterType } from "../AllUsers/AllUsers";
 
 
 type UserFilterProps = {
     filterStatus: FilterType;
     filterRole: FilterType;
     onFilterChangeStatus: FilterChangeListener;
-    onFilterChangeRole: FilterChangeListener
+    onFilterChangeRole: FilterChangeListener;
 
 };
 
@@ -22,11 +20,11 @@ export const UserFilter = ({ filterStatus, filterRole, onFilterChangeStatus, onF
 
 
     function handleFilterChangeStatus(event: SelectChangeEvent<unknown>) {
-        onFilterChangeStatus(event.target.value === '0' ? undefined : parseInt(event.target.value as string))
+        onFilterChangeStatus(event.target.value === '0' ? undefined : parseInt(event.target.value as string));
     }
 
     function handleFilterChangeRole(event: SelectChangeEvent<unknown>) {
-        onFilterChangeRole(event.target.value === '0' ? undefined : parseInt(event.target.value as string))
+        onFilterChangeRole(event.target.value === '0' ? undefined : parseInt(event.target.value as string));
     }
 
     return (

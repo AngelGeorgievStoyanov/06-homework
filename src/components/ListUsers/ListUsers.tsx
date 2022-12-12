@@ -6,13 +6,13 @@ import { UserUpdateListener } from "../shared/common-types";
 
 
 type UsersProps = {
-    users: User[]
+    users: User[];
     owner: User | number | undefined;
     onEditedUser: UserUpdateListener;
     admin: 2 | undefined | boolean;
     onDeleteUser: UserUpdateListener;
-    filterStatus: FilterType
-    filterRole: FilterType
+    filterStatus: FilterType;
+    filterRole: FilterType;
 
 }
 

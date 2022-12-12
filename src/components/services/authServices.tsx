@@ -2,7 +2,6 @@ import { Identifiable } from "../shared/common-types";
 
 import { entityWithoutId } from '../interfaces/interfaces'
 import { User, UserRegister } from "../model/users";
-import { type } from "@testing-library/user-event/dist/type";
 const apiJson = `http://localhost:4000/api`;
 
 
@@ -63,26 +62,6 @@ export class ApiClientImpl<K, V extends Identifiable<K>> implements ApiClient<K,
 
     async register(entityWithoutId: UserRegister): Promise<V> {
 
-        // if (entityWithoutId.firstName === '') {
-        //     throw new Error('First Name is required')
-        // }
-        // if (entityWithoutId.lastName === '') {
-        //     throw new Error('Last Name is required')
-        // }
-        // if (entityWithoutId.username === '') {
-        //     throw new Error('Username is required')
-        // }
-        // if (entityWithoutId.password === '') {
-        //     throw new Error('Password is required')
-        // }
-        // if (entityWithoutId.rePass === '') {
-        //     throw new Error('Confirm Password is required')
-        // }
-
-        // if (entityWithoutId.password !== entityWithoutId.rePass) {
-        //     throw new Error('Password and Confirm Password don\'t match')
-        // }
-
 
         return this.handleJsonRequest<V>(`${apiJson}/${this.apiCollectionSuffix}`, {
             method: 'POST',
@@ -136,133 +115,59 @@ export const login1 = async (username: string, password: string) => {
 }
 
 export const serachInDB = async (query: string) => {
-    let resultFilter: User[] | any = []
-
-    const username = await fetch(`${apiJson}/users?username_like=${query}`)
-    let resultUserName = await username.json()
-    console.log(resultUserName)
-
-    const firstName = await fetch(`${apiJson}/users?firstName_like=${query}`)
-    let resultfirstName = await firstName.json()
-    console.log(resultfirstName)
-
-    const lastName = await fetch(`${apiJson}/users?lastName_like=${query}`)
-    const resultlastName = await lastName.json()
-    console.log(resultlastName)
-
-    if (resultUserName.length > 0 && resultfirstName.length > 0 && resultlastName.length > 0) {
+    let resultFilter: User[] | any = [];
+    const setId = new Set();
 
 
-        const filterByUsernameAndFirstNamme = (resultUserName: User[], resultfirstName: User[]) => {
-            let res = [];
-            res = resultUserName.filter(el => {
-               
-                return !resultfirstName.find(element => {
-                    return element.id === el.id;
-                });
-            });
-            console.log(res)
-            return res;
-        }
+    const username = await fetch(`${apiJson}/users?username_like=${query}`);
+    let resultUserName = await username.json();
+    if (resultUserName.length > 0) {
+        resultUserName.map((x: any) => setId.add(x.id));
 
-
-
-        const lastFilter = (arr1: User[], resultlastName: User[]) => {
-            let res = [];
-            res = arr1.filter(el => {
-                return !resultlastName.find(element => {
-                      
-                    return element.id === el.id;
-                });
-            });
-            return res;
-        }
-        const arr1 = filterByUsernameAndFirstNamme(resultUserName, resultfirstName)
-
-        const arr = lastFilter(arr1, resultlastName)
-
-        console.log(arr1,'--arr1-')
-        console.log(arr,'--arr-')
-        resultFilter = resultFilter.concat(arr)
-
-    } else if (resultUserName.length > 0 && resultfirstName.length > 0 && resultlastName.length === 0) {
-
-        const filterByUsernameAndFirstNamme = (resultUserName: User[], resultfirstName: User[]) => {
-            let res = [];
-            res = resultUserName.filter(el => {
-                return !resultfirstName.find(element => {
-                    return element.id === el.id;
-                });
-            });
-            return res;
-        }
-
-
-        const arr = filterByUsernameAndFirstNamme(resultUserName, resultfirstName)
-        resultFilter = resultFilter.concat(arr)
-
-    } else if (resultUserName.length > 0 && resultfirstName.length === 0 && resultlastName.length > 0) {
-
-        const filterByUsernameAndLastNamme = (resultUserName: User[], resultlastName: User[]) => {
-            let res = [];
-            res = resultUserName.filter(el => {
-                return !resultlastName.find(element => {
-                    return element.id === el.id;
-                });
-            });
-            console.log(res)
-            return res;
-        }
-
-
-        const arr = filterByUsernameAndLastNamme(resultUserName, resultlastName)
-        resultFilter = resultFilter.concat(arr)
-
-    } else if (resultUserName.length === 0 && resultfirstName.length > 0 && resultlastName.length > 0) {
-
-        const filterByFirstNameAndLastNamme = (resultfirstName: User[], resultlastName: User[]) => {
-            let res = [];
-            res = resultfirstName.filter(el => {
-                return !resultlastName.find(element => {
-                    return element.id === el.id;
-                });
-            });
-            return res;
-        }
-
-
-        const arr = filterByFirstNameAndLastNamme(resultlastName, resultfirstName)
-        resultFilter = resultFilter.concat(arr)
-
-
-    } else {
-        if (resultUserName.length > 0) {
-
-            resultFilter = resultFilter.concat(resultUserName)
-
-
-        } else if (resultfirstName.length > 0) {
-            resultFilter = resultFilter.concat(resultfirstName)
-
-        } else if (resultlastName.length > 0) {
-            resultFilter = resultFilter.concat(resultlastName)
-
-        } else {
-            // let notMath = 'Not match!'
-            // resultFilter.push(notMath)
-
-            throw new Error('Not match in DB')
-
-        }
     }
 
 
-    return resultFilter
+    const firstName = await fetch(`${apiJson}/users?firstName_like=${query}`)
+    let resultfirstName = await firstName.json();
+
+    if (resultfirstName.length > 0) {
+        resultfirstName.map((x: any) => setId.add(x.id));
+    }
+
+
+    const lastName = await fetch(`${apiJson}/users?lastName_like=${query}`)
+    const resultlastName = await lastName.json();
+
+    if (resultlastName.length > 0) {
+        resultlastName.map((x: any) => setId.add(x.id));
+
+    }
+
+
+
+
+    if (Array.from(setId).length > 0) {
+        const users = Array.from(setId).map(async (x) => {
+            const user = await fetch(`${apiJson}/users?id=${x}`);
+            const res = await user.json();
+            return res;
+        });
+
+
+
+        const arr = await Promise.all(users).then(us => {
+            return us;
+        })
+
+        const arrUsers = arr.map((x: any) => { return x[0] });
+
+        resultFilter = arrUsers;
+        return resultFilter;
+
+    }else{
+        throw new Error(`No match users in DB with ${query}`)
+    }
 
 
 }
 
-
-
-// localhost:3000/customer?name_like=rist&education_like=high
-// const response = await fetch(`${apiJson}/users?username_like=${query}&firstName_like=${query}`)

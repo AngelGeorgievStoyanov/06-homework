@@ -13,35 +13,26 @@
 }
 
 
-.div-exit{
-    display: flex;    
-    justify-content: center;
-    margin: 20px 20px;
-}
-
-
-.welcome{
-    display: flex;    
-    justify-content: center;
-    background-color: #2e2d2d94;
-    color: white;
-}
-button{
-    margin: 10px 10px;
-    cursor: pointer;
-}
-
-.btn-del:hover{
-    background-color: red;
-    color: white;
-}
-
-
 #login{
     width: 500px;
 }
 
 #register{
     width: 600px;
+}
+
+.errors{
+    background-color: black;
+    color: red;
+    padding: 14px 35px;
+    margin-top: 50px;
+}
+
+.welcome{
+    display: flex;
+    justify-content: center;
+    width: 100vW;
+    background-color: #6b6666e0;
+    color: black;
 }
 

@@ -7,7 +7,6 @@ import { UserListenerLogin } from '../shared/common-types'
 import SendIcon from '@mui/icons-material/Send';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-import './Login.css'
 
 const EMPTY_USERNAME = '';
 const EMPTY_PASSWORD = '';
@@ -15,10 +14,10 @@ const EMPTY_PASSWORD = '';
 
 interface LoginProps {
 
-    onLogin: UserListenerLogin
-    onTogle: React.MouseEventHandler<HTMLButtonElement>
-    username:string
-    password:string
+    onLogin: UserListenerLogin;
+    onTogle: React.MouseEventHandler<HTMLButtonElement>;
+    username:string;
+    password:string;
 }
 
 type FormData = {
@@ -43,13 +42,12 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
 
         event?.preventDefault();
 
-        const  newusername = data.username 
-        const  mewpassword = data.password 
+        const  newusername = data.username;
+        const  mewpassword = data.password;
 
-        onLogin(newusername, mewpassword)
+        onLogin(newusername, mewpassword);
 
-        reset({username,password})
-
+        reset({username,password});
       
     }
 
