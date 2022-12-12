@@ -8,6 +8,10 @@ import './AllUsers.css'
 import Register from "../Register/Register"
 import Login from "../Login/Login"
 import { UserFilter } from "../UserFilter/UserFilter"
+import AppBar from "@mui/material/AppBar/AppBar"
+import Toolbar from "@mui/material/Toolbar/Toolbar"
+import Button from "@mui/material/Button/Button"
+import TextField from "@mui/material/TextField/TextField"
 
 export type FilterType = UserStatus | UserRole | undefined;
 
@@ -60,23 +64,17 @@ const AllUsers = () => {
 
 
 
-
-
     const handleUserSubmit = useCallback(async (user: UserRegister | User) => {
         try {
 
             if ('id' in user) {
-                console.log(user,'2')
-
+             
                 await handleUpdateUser(user)
                 setEditedUser(undefined)
 
             } else {
 
-                console.log(user,'3')
-
                 await API_CLIENT.findByUsername(user.username)
-
 
                 const register = await API_CLIENT.register(user)
 
@@ -100,8 +98,6 @@ const AllUsers = () => {
 
 
 
-
-
     const handleLogin = useCallback(async (username: string, password: string) => {
         try {
             const userLog = await authServices.login1(username, password)
@@ -119,12 +115,7 @@ const AllUsers = () => {
             const role = userLog.map((x: any) => { return x.role })
 
             setAdmin(role[0] === 2 ? true : undefined)
-            // let userEl = document.getElementById('username') as HTMLInputElement
-            // userEl.value = ''
-            // let passEl = document.getElementById('password') as HTMLInputElement
-            // passEl.value = ''
-
-
+         
 
         } catch (err) {
             setErrors(err + '');
@@ -136,23 +127,16 @@ const AllUsers = () => {
 
 
     const handleEditUser = (user: User) => {
-        console.log(editedUser,'editedUser1')
-        console.log(user)
-
+      
         mainHideF()
 
         if (hide === false) {
             setHide(!hide);
         }
-        
-         setEditedUser(undefined)
-        // setEditedUser(editedUser ? undefined : new User(0, '', '', '', '', '', undefined, undefined, '', '', '', ''))
-        
-        
+
+        setEditedUser(undefined)      
         setEditedUser(user)
-
-        console.log(editedUser,'editedUser2')
-
+     
     }
 
 
@@ -164,11 +148,7 @@ const AllUsers = () => {
 
 
     const mainHideF = () => {
-
-
         setMainHide(!mainHide)
-
-
     }
 
     const exit = () => {
@@ -213,7 +193,7 @@ const AllUsers = () => {
                 setUsers(searchUsers)
                 setErrors(undefined)
             } else if (!serach.value) {
-                console.log('ppp')
+              
                 setErrors(undefined)
 
             }
@@ -224,7 +204,7 @@ const AllUsers = () => {
 
     const handleFilterChangeStatus = (filterStatus: FilterType) => {
         setFilterStatus(filterStatus)
-       
+
 
     }
 
@@ -240,7 +220,7 @@ const AllUsers = () => {
 
             <article style={{ display: mainHide ? "none" : "block" }}>
                 <div className="login" id="login" style={{ display: hide ? "none" : "block" }}>
-                    <Login onLogin={handleLogin} onTogle={toggleHide}  username={''} password={''} />
+                    <Login onLogin={handleLogin} onTogle={toggleHide} username={''} password={''} />
                 </div>
                 <div className="register" id="register" style={{ display: hide ? "block" : "none" }}>
                     <Register key={editedUser?.id} onTogle={toggleHide} user={editedUser} admin={admin} onRegister={handleUserSubmit} />
@@ -248,15 +228,17 @@ const AllUsers = () => {
             </article>
 
             <main className="main" style={{ display: mainHide ? "block" : "none" }}>
-                <div className="div-exit">
-                    <button onClick={exit}>EXIT</button>
-                    <button onClick={createUser}>Create new USER</button>
-                    <div >
-                        <input id="find-users" type="text" />
-                        <button onClick={serachUsers}>FIND USERS</button>
-                    </div>
+                <AppBar id="appBar" sx={{ margin: '0px', backgroundColor:'rgb(196 196 217)' , justifyContent:'space-evenly'}}>
+                    <Toolbar sx={{justifyContent:'space-evenly'}}>
+                        <Button onClick={exit} sx={{ ':hover': { backgroundColor: "rgb(234 233 233)", color: 'rgb(4 4 4)' }, backgroundColor: "rgb(4 4 4)", color: 'rgb(234 233 233)', }}>EXIT</Button>
+                        {admin ? <Button onClick={exit} sx={{ ':hover': { backgroundColor: "rgb(234 233 233)", color: 'rgb(4 4 4)' }, backgroundColor: "rgb(4 4 4)", color: 'rgb(234 233 233)', }}>Create new USER</Button> : ''}
+                        <TextField id="find-users" label="Find users" type="search"   variant="filled"  sx={{ backgroundColor: "rgb(234 233 233)", color: 'rgb(4 4 4)', borderRadius: '9px'}} />
+                        <Button onClick={serachUsers} sx={{ ':hover': { backgroundColor: "rgb(234 233 233)", color: 'rgb(4 4 4)' }, backgroundColor: "rgb(4 4 4)", color: 'rgb(234 233 233)', }}>FIND USERS</Button>
+
                     <UserFilter filterStatus={filterStatus} filterRole={filterRole} onFilterChangeStatus={handleFilterChangeStatus} onFilterChangeRole={handleFilterChangeRole} />
-                </div>
+                    </Toolbar>
+                </AppBar>
+               
                 {name ? <div className="welcome"><h2 >Welcome {name} !</h2></div> : ''}
                 <div className="main">
                     <ListUsers users={users} owner={owner} admin={admin} onEditedUser={handleEditUser} onDeleteUser={handleDeleteUser} filterStatus={filterStatus} filterRole={filterRole} />

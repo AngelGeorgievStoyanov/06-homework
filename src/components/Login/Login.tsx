@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import React, { BaseSyntheticEvent, FormEvent } from 'react'
-import { Control, Controller, FieldPath, FieldValues, Path, RegisterOptions, useForm } from 'react-hook-form'
+import {useForm } from 'react-hook-form'
 import FormInputText from '../FormInputText/FormInputText'
 import { UserListenerLogin } from '../shared/common-types'
 import SendIcon from '@mui/icons-material/Send';
@@ -52,47 +51,23 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
         reset({username,password})
 
       
-
-
-
-
     }
 
     const onReset = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('RESETING FORM');
-
-        reset();
+              reset();
     }
 
 
 
     return (
         <>
-            {/* <section className='section-form-login'>
-            <h3 className='login-h3'>Login Form</h3>
-            <form method='POST' className='form-login' onSubmit={loginSubmitHandler}>
-
-                <span className='span-login'>
-                    <label htmlFor="username">Username : </label>
-                    <input type="text" name='username' id='username' minLength={5} maxLength={15} />
-                </span>
-                <span className='span-login'>
-                    <label htmlFor="password">Password : </label>
-                    <input type="password" name='password' id='password' />
-                </span>
-                <input className='button-login' type="submit" value={'Login'} />
-
-                <button className='button-go-to-register' onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onTogle(e)} >Don't Have An Account? Sign up!</button>
-
-            </form>
-
-        </section> */}
+          
 
             <Box
                 component="form"
                 sx={{
-                    backgroundColor: '#ddf',
+                    backgroundColor: '#ddddfff7',
                     padding: '20px',
                     '& .MuiFormControl-root': { m: 0.5, width: 'calc(100% - 10px)' },
                     '& .MuiButton-root': { m: 1, width: '25ch' },
@@ -113,7 +88,7 @@ function Login({ username = EMPTY_USERNAME, password = EMPTY_PASSWORD, onLogin, 
                 <Button variant="contained" endIcon={<CancelIcon />} color='warning' type='reset'>
                     Reset
                 </Button>
-                <button className='button-go-to-register' onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onTogle(e)} >Don't Have An Account? Sign up!</button>
+                <Button variant="contained"  onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => onTogle(e)} sx={{':hover':{color:'rgb(248 245 245)'}, background:'rgb(194 194 224)', color:'rgb(144 144 166)'}} >Don't Have An Account? Sign up!</Button>
 
             </Box>
 

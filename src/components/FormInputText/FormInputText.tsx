@@ -1,6 +1,5 @@
 import TextField from '@mui/material/TextField';
 import { Control, Controller, FieldPath, FieldValues, Path, RegisterOptions } from "react-hook-form";
-import React from "react";
 
 interface FormInputTextProps<TFieldValues extends FieldValues> {
     name: Path<TFieldValues>;
@@ -10,7 +9,8 @@ interface FormInputTextProps<TFieldValues extends FieldValues> {
     disabled?: boolean;
     size?: 'small' | 'medium';
     error?: string | undefined;
-    type?:'text' | 'password'
+    type?:'text' | 'password';
+    
 }
 
 

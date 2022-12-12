@@ -1,4 +1,8 @@
+import InputLabel from "@mui/material/InputLabel/InputLabel";
+import MenuItem from "@mui/material/MenuItem/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React from "react";
+
 import { FilterChangeListener, FilterType } from "../AllUsers/AllUsers"
 
 
@@ -11,30 +15,40 @@ type UserFilterProps = {
 };
 
 
+
 export const UserFilter = ({ filterStatus, filterRole, onFilterChangeStatus, onFilterChangeRole }: UserFilterProps) => {
 
-    function handleFilterChangeStatus(event: React.ChangeEvent<HTMLSelectElement>) {
-        onFilterChangeStatus(event.target.value === '0' ? undefined : parseInt(event.target.value))
+
+
+
+    function handleFilterChangeStatus(event: SelectChangeEvent<unknown>) {
+        onFilterChangeStatus(event.target.value === '0' ? undefined : parseInt(event.target.value as string))
     }
 
-    function handleFilterChangeRole(event: React.ChangeEvent<HTMLSelectElement>) {
-        onFilterChangeRole(event.target.value === '0' ? undefined : parseInt(event.target.value))
+    function handleFilterChangeRole(event: SelectChangeEvent<unknown>) {
+        onFilterChangeRole(event.target.value === '0' ? undefined : parseInt(event.target.value as string))
     }
 
     return (
         <>
-            <select value={filterStatus} onChange={handleFilterChangeStatus}>
-                <option value="0">ALL</option>
-                <option value="1">ACTIVE</option>
-                <option value="2">SUSPENDED</option>
-                <option value="3">DEACTIVATED</option>
-            </select>
 
-            <select value={filterRole} onChange={handleFilterChangeRole}>
-                <option value="0">ALL</option>
-                <option value="1">USER</option>
-                <option value="2">ADMIN</option>
-            </select>
+            <InputLabel id="label">STATUS</InputLabel>
+            <Select labelId="label" id="status" value={filterStatus} onChange={handleFilterChangeStatus} sx={{ width: '135px' }}>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'0'}>ALL</MenuItem>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'1'}>ACTIVE</MenuItem>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'2'}>SUSPENDED</MenuItem>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'3'}>DEACTIVATED</MenuItem>
+            </Select>
+
+
+            <InputLabel id="label">ROLE</InputLabel>
+            <Select labelId="label" id="status" value={filterRole} onChange={handleFilterChangeRole} sx={{ width: '120px' }}>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'0'}>ALL</MenuItem>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'1'}>USER</MenuItem>
+                <MenuItem sx={{ ':hover': { backgroundColor: '#9e9e9e', color: 'white' } }} value={'2'}>ADMIN</MenuItem>
+            </Select>
+
+
         </>
     )
 

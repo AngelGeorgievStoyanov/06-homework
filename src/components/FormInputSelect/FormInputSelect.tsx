@@ -1,5 +1,4 @@
 import { Control, Controller, FieldPath, FieldValues, Path, RegisterOptions } from "react-hook-form";
-import React from "react";
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 export interface SelectOption {

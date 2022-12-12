@@ -63,25 +63,25 @@ export class ApiClientImpl<K, V extends Identifiable<K>> implements ApiClient<K,
 
     async register(entityWithoutId: UserRegister): Promise<V> {
 
-        if (entityWithoutId.firstName === '') {
-            throw new Error('First Name is required')
-        }
-        if (entityWithoutId.lastName === '') {
-            throw new Error('Last Name is required')
-        }
-        if (entityWithoutId.username === '') {
-            throw new Error('Username is required')
-        }
-        if (entityWithoutId.password === '') {
-            throw new Error('Password is required')
-        }
-        if (entityWithoutId.rePass === '') {
-            throw new Error('Confirm Password is required')
-        }
+        // if (entityWithoutId.firstName === '') {
+        //     throw new Error('First Name is required')
+        // }
+        // if (entityWithoutId.lastName === '') {
+        //     throw new Error('Last Name is required')
+        // }
+        // if (entityWithoutId.username === '') {
+        //     throw new Error('Username is required')
+        // }
+        // if (entityWithoutId.password === '') {
+        //     throw new Error('Password is required')
+        // }
+        // if (entityWithoutId.rePass === '') {
+        //     throw new Error('Confirm Password is required')
+        // }
 
-        if (entityWithoutId.password !== entityWithoutId.rePass) {
-            throw new Error('Password and Confirm Password don\'t match')
-        }
+        // if (entityWithoutId.password !== entityWithoutId.rePass) {
+        //     throw new Error('Password and Confirm Password don\'t match')
+        // }
 
 
         return this.handleJsonRequest<V>(`${apiJson}/${this.apiCollectionSuffix}`, {

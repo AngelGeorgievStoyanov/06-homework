@@ -1,10 +1,8 @@
-
 import { useMemo } from "react";
 import { FilterType } from "../AllUsers/AllUsers";
 import CardUser from "../CardUser/CardUser";
 import { User } from "../model/users";
 import { UserUpdateListener } from "../shared/common-types";
-
 
 
 type UsersProps = {
@@ -24,8 +22,6 @@ function ListUsers({ users, filterStatus, filterRole, ...rest }: UsersProps) {
 
     return (
         <>
-
-
             {filterUsers.map(x => <CardUser key={x.id} user={x}  {...rest} />)}
 
         </>

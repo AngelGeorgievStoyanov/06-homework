@@ -23,6 +23,8 @@
 .welcome{
     display: flex;    
     justify-content: center;
+    background-color: #2e2d2d94;
+    color: white;
 }
 button{
     margin: 10px 10px;
@@ -38,3 +40,8 @@ button{
 #login{
     width: 500px;
 }
+
+#register{
+    width: 600px;
+}
+
