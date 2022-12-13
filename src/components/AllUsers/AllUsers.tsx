@@ -174,8 +174,9 @@ const AllUsers = () => {
     }
 
     const createUser = () => {
-
-        setCreateUserAdmin(true)
+        setEditedUser(undefined);
+    
+        setCreateUserAdmin(true);
         mainHideF();
 
         if (hide === false) {

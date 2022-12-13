@@ -68,7 +68,7 @@ const schema = yup.object({
     rePass: yup.string().test('passwords-match', 'Passwords must match', function (value) { return this.parent.password === value }),
     gender: yup.number().required(),
     role: yup.number().required(),
-    imageUrl: yup.string(),
+    imageUrl: yup.string().url(),
     description: yup.string().max(512),
     timeCreated: yup.string(),
     timeEdited: yup.string(),
@@ -130,13 +130,13 @@ export default function Register({ user, onRegister, onTogle, admin, owner, crea
 
                 </Typography>
                 <FormInputText name='firstName' label='First Name' control={control} error={errors.firstName?.message}
-                    rules={{ required: true, minLength: 2, maxLength: 40 }} />
+                    rules={{ required: true, minLength: 2, maxLength: 15 }} />
                 <FormInputText name='lastName' label='Last Name' control={control} error={errors.lastName?.message}
-                    rules={{ required: true, minLength: 2, maxLength: 40 }} />
+                    rules={{ required: true, minLength: 2, maxLength: 15 }} />
 
                 {(admin === true) && (owner !== user?.id) && (createUserAdmin !==true) ? <>
                     <FormInputText name='username' label='Username' disabled control={control} error={errors.username?.message}
-                        rules={{ required: true, minLength: 2, maxLength: 1024 }} />
+                        rules={{ required: true, minLength: 5, maxLength: 15 }} />
                     <FormInputText name='password' label='Password' disabled control={control} type='password' error={errors.password?.message}
                         rules={{ required: true }} />
                     <FormInputText name='rePass' label='Confurm Password' disabled control={control} type='password' error={errors.rePass?.message}
@@ -145,7 +145,7 @@ export default function Register({ user, onRegister, onTogle, admin, owner, crea
                     :
                     <>
                         <FormInputText name='username' label='Username' control={control} error={errors.username?.message}
-                            rules={{ required: true, minLength: 2, maxLength: 1024 }} />
+                            rules={{ required: true, minLength: 5, maxLength: 15 }} />
                         <FormInputText name='password' label='Password' control={control} error={errors.password?.message}
                             rules={{ required: true }} />
                         <FormInputText name='rePass' label='Confurm Password' control={control} error={errors.rePass?.message}
